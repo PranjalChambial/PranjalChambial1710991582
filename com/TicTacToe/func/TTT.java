@@ -43,7 +43,7 @@ public class TTT {
 			System.out.println("Enter position for 'X' ");
 			c='X';
 		}else {
-			System.out.println("Enter position for 'O' ");
+			System.out.println("Enter position for 'O'");
 			c='O';
 		}
 
