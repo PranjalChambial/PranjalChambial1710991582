@@ -30,7 +30,7 @@ public class TTT {
 		System.out.println("");
 		if(x)
 			changeBoard();
-		
+
 	}
 
 	public static void changeBoard() {
@@ -48,32 +48,77 @@ public class TTT {
 		int x=sc.nextInt();
 
 		switch(x) {
-		case 1 : board[0][0]=c;
-		++p;
+		case 1 : if(board[0][0]=='1') {
+			board[0][0]=c;
+			++p;
+		}else {
+			System.out.println("\nPlace already taken!\n");
+			printBoard(true);
+		}
 		break;
-		case 2 : board[0][1]=c;
-		++p;
+		case 2 : if(board[0][1]=='2') {
+			board[0][1]=c;
+			++p;
+		}else {
+			System.out.println("\nPlace already taken!\n");
+			printBoard(true);
+		}
 		break;
-		case 3 : board[0][2]=c;
-		++p;
+		case 3 : if(board[0][2]=='3') {
+			board[0][2]=c;
+			++p;
+		}else {
+			System.out.println("\nPlace already taken!\n");
+			printBoard(true);
+		}
 		break;
-		case 4 : board[1][0]=c;
-		++p;
+		case 4 : if(board[1][0]=='4') {
+			board[1][0]=c;
+			++p;
+		}else {
+			System.out.println("\nPlace already taken!\n");
+			printBoard(true);
+		}
 		break;
-		case 5 : board[1][1]=c;
-		++p;
+		case 5 : if(board[1][1]=='5') {
+			board[1][1]=c;
+			++p;
+		}else {
+			System.out.println("\nPlace already taken!\n");
+			printBoard(true);
+		}
 		break;
-		case 6 : board[1][2]=c;
-		++p;
+		case 6 : if(board[1][2]=='6') {
+			board[1][2]=c;
+			++p;
+		}else {
+			System.out.println("\nPlace already taken!\n");
+			printBoard(true);
+		}
 		break;
-		case 7 : board[2][0]=c;
-		++p;
+		case 7 : if(board[2][0]=='7') {
+			board[2][0]=c;
+			++p;
+		}else {
+			System.out.println("\nPlace already taken!\n");
+			printBoard(true);
+		}
 		break;
-		case 8 : board[2][1]=c;
-		++p;
+		case 8 : if(board[2][1]=='8') {
+			board[2][1]=c;
+			++p;
+		}else {
+			System.out.println("\nPlace already taken!\n");
+			printBoard(true);
+		}
 		break;
-		case 9 : board[2][2]=c;
-		++p;
+		case 9 : if(board[2][2]=='9') {
+			board[2][2]=c;
+			++p;
+		}else {
+			System.out.println("\nPlace already taken!\n");
+			printBoard(true);
+		}
 		break;
 		default : System.out.println("\nWrong Input!\n");
 		printBoard(true);
@@ -81,7 +126,7 @@ public class TTT {
 		}
 
 		checkBoard(x,p,c);
-		
+
 		if(p==8) {
 			printBoard(false);
 			System.out.println("\nBoard is full.");
@@ -197,7 +242,7 @@ public class TTT {
 
 		System.out.println("\nContinue y/n : ");
 		char s=sc.next().charAt(0);
-		
+
 		if(s=='y') {
 			createBoard();
 			System.out.println("\nBoard is :\n");
