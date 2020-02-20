@@ -6,11 +6,11 @@ import java.util.Scanner;
 public class TTT {
 
 	public static Scanner sc=new Scanner(System.in);
-
+	public static int p=0;
 	public static char board[][]=new char[3][3];
 
 	public static void createBoard() {
-		//char board[][]= {{1,2,3},{4,5,6},{7,8,9}};
+		p=0;
 
 		for(int i=0,k=1;i<3;++i) {
 			for(int j=0;j<3;++j) {
@@ -21,25 +21,33 @@ public class TTT {
 	}
 
 	public static void printBoard(boolean x) {
-		System.out.println("\nBoard is :\n");
 		for(int i=0;i<3;++i) {
 			for(int j=0;j<3;++j) {
 				System.out.print(board[i][j] + " ");
 			}
 			System.out.println("");
 		}
+		System.out.println("");
 		if(x) {
 			changeBoard();
 		}else {
-			
+
 		}
 	}
 
 	public static void changeBoard() {
 
-		System.out.println("Enter position and value 'X' or 'O'");
-		int p=0,x=sc.nextInt();
-		char c=sc.next().charAt(0);
+		char c;
+
+		if(p%2==0) {
+			System.out.println("Enter position for 'X' ");
+			c='X';
+		}else {
+			System.out.println("Enter position for 'O'");
+			c='O';
+		}
+
+		int x=sc.nextInt();
 
 		switch(x) {
 		case 1 : board[0][0]=c;
@@ -76,48 +84,112 @@ public class TTT {
 
 	public static void checkBoard(int x,int p,char c) {
 
-		if(x==1||x==2||x==3) {
-			if(board[0][0]==c && board[0][1]==c && board[0][2]==c) {
-				printBoard(false);
-				System.out.println("Winner is : "+c);
-				cont();
-			}
-		}else if(x==4||x==5||x==6) {
-			if(board[1][0]==c && board[1][1]==c && board[1][2]==c) {
-				printBoard(false);
-				System.out.println("Winner is : "+c);
-				cont();
-			}
-		}else if(x==7||x==8||x==9) {
-			if(board[2][0]==board[2][1] && board[2][1]==board[2][2]) {
-				printBoard(false);
-				System.out.println("Winner is : "+c);
-				cont();
-			}
+		switch(x) {
+		case 1 : ;
+		if(checkRow1()||checkCol1()||checkDia1()) {
+			printBoard(false);
+			System.out.println("Winner is : "+c);
+			cont();
 		}
-
-		if(x==1||x==5||x==9) {
-			if(board[0][0]==c && board[1][1]==c && board[2][2]==c) {
-				printBoard(false);
-				System.out.println("Winner is : "+c);
-				cont();
-			}
+		break;
+		case 2 : ;
+		if(checkRow2()||checkCol1()) {
+			printBoard(false);
+			System.out.println("\nWinner is : "+c);
+			cont();
 		}
-		if(x==3||x==5||x==7) {
-			if(board[0][2]==board[1][1] && board[0][2]==board[2][2]) {
-				printBoard(false);
-				System.out.println("Winner is : "+c);
-				cont();
-			}
+		break;
+		case 3 : ;
+		if(checkRow3()||checkCol1()||checkDia2()) {
+			printBoard(false);
+			System.out.println("\nWinner is : "+c);
+			cont();
+		}
+		break;
+		case 4 : ;
+		if(checkRow1()||checkCol2()) {
+			printBoard(false);
+			System.out.println("\nWinner is : "+c);
+			cont();
+		}
+		break;
+		case 5 : ;
+		if(checkRow2()||checkCol2()||checkDia1()||checkDia2()) {
+			printBoard(false);
+			System.out.println("\nWinner is : "+c);
+			cont();
+		}
+		break;
+		case 6 : ;
+		if(checkRow3()||checkCol2()) {
+			printBoard(false);
+			System.out.println("\nWinner is : "+c);
+			cont();
+		}
+		break;
+		case 7 : ;
+		if(checkRow1()||checkCol3()||checkDia2()) {
+			printBoard(false);
+			System.out.println("\nWinner is : "+c);
+			cont();
+		}
+		break;
+		case 8 : ;
+		if(checkRow2()||checkCol3()) {
+			printBoard(false);
+			System.out.println("\nWinner is : "+c);
+			cont();
+		}
+		break;
+		case 9 : ;
+		if(checkRow3()||checkCol3()||checkDia1()) {
+			printBoard(false);
+			System.out.println("\nWinner is : "+c);
+			cont();
+		}
+		break;
 		}
 
 		if(p==8) {
 			printBoard(false);
+			System.out.println("\nBoard is full.");
 			cont();
 		}else {
 			printBoard(true);
 		}
 
+	}
+
+	public static boolean checkRow1() {
+		return board[0][0]==board[1][0]&&board[0][0]==board[2][0];
+	}
+
+	public static boolean checkRow2() {
+		return board[0][1]==board[1][1]&&board[0][1]==board[2][1];
+	}
+
+	public static boolean checkRow3() {
+		return board[0][2]==board[1][2]&&board[0][2]==board[2][2];
+	}
+
+	public static boolean checkCol1() {
+		return board[0][0]==board[0][1]&&board[0][0]==board[0][2];
+	}
+
+	public static boolean checkCol2() {
+		return board[1][0]==board[1][1]&&board[1][0]==board[1][2];
+	}
+
+	public static boolean checkCol3() {
+		return board[2][0]==board[2][1]&&board[2][0]==board[2][2];
+	}
+
+	public static boolean checkDia1() {
+		return board[0][0]==board[1][1]&&board[0][0]==board[2][2];
+	}
+
+	public static boolean checkDia2() {
+		return board[0][2]==board[1][1]&&board[0][2]==board[2][0];
 	}
 
 	public static void cont(){
