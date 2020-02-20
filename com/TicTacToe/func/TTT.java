@@ -28,11 +28,9 @@ public class TTT {
 			System.out.println("");
 		}
 		System.out.println("");
-		if(x) {
+		if(x)
 			changeBoard();
-		}else {
-
-		}
+		
 	}
 
 	public static void changeBoard() {
@@ -77,9 +75,20 @@ public class TTT {
 		case 9 : board[2][2]=c;
 		++p;
 		break;
+		default : System.out.println("\nWrong Input!\n");
+		printBoard(true);
+		break;
 		}
 
 		checkBoard(x,p,c);
+		
+		if(p==8) {
+			printBoard(false);
+			System.out.println("\nBoard is full.");
+			cont();
+		}else {
+			printBoard(true);
+		}
 	}
 
 	public static void checkBoard(int x,int p,char c) {
@@ -150,14 +159,6 @@ public class TTT {
 		break;
 		}
 
-		if(p==8) {
-			printBoard(false);
-			System.out.println("\nBoard is full.");
-			cont();
-		}else {
-			printBoard(true);
-		}
-
 	}
 
 	public static boolean checkRow1() {
@@ -196,11 +197,17 @@ public class TTT {
 
 		System.out.println("\nContinue y/n : ");
 		char s=sc.next().charAt(0);
+		
 		if(s=='y') {
 			createBoard();
-		}else {
+			System.out.println("\nBoard is :\n");
+			printBoard(true);
+		}else if(s=='n'){
 			System.out.println("\nOK, Bye! ");
 			System.exit(0);
+		}else {
+			System.out.println("\nWrong Input! ");
+			cont();
 		}
 	}
 
