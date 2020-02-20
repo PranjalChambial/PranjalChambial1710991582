@@ -40,10 +40,10 @@ public class TTT {
 		char c;
 
 		if(p%2==0) {
-			System.out.println("Enter position for 'X' ");
+			System.out.println("Enter position for 'X'");
 			c='X';
 		}else {
-			System.out.println("Enter position for 'O' ");
+			System.out.println("Enter position for 'O'");
 			c='O';
 		}
 
